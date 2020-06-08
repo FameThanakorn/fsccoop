@@ -15,27 +15,27 @@ class PDF_02 extends CI_Controller {
     public function Contract08()
 	{
 		// print_r($_GET['member_id']); exit;
-		$member_id = '000008';
+		$loan_id = '6482';
 		$arr_data = array();
 		$this->load->model('Fsccoop_data', 'Fsccoop_data');
-		$result = $this->Fsccoop_data->get_profile($member_id);
-		$arr_data["user"] = $result;
-		$result2 = $this->Fsccoop_data->fscoop_getloan_amount($member_id);
-		$arr_data["loan_amount"] = $result2;
-		$result3 = $this->Fsccoop_data->fscoop_province($member_id);
-		$arr_data["province"] = $result3;
-		$result4 = $this->Fsccoop_data->fscoop_amphur($member_id);
-		$arr_data["amphur"] = $result4;
-		$result5 = $this->Fsccoop_data->fscoop_district($member_id);
-		$arr_data["district"] = $result5;
-		$result6 = $this->Fsccoop_data->fscoop_share($member_id);
-		$arr_data['share'] = $result6;
-		$result = $this->Fsccoop_data->fscoop_full($member_id);
+		// $result = $this->Fsccoop_data->get_profile($loan_id);
+		// $arr_data["user"] = $result;
+		// $result2 = $this->Fsccoop_data->fscoop_getloan_amount($loan_id);
+		// $arr_data["loan_amount"] = $result2;
+		// $result3 = $this->Fsccoop_data->fscoop_province($loan_id);
+		// $arr_data["province"] = $result3;
+		// $result4 = $this->Fsccoop_data->fscoop_amphur($loan_id);
+		// $arr_data["amphur"] = $result4;
+		// $result5 = $this->Fsccoop_data->fscoop_district($loan_id);
+		// $arr_data["district"] = $result5;
+		// $result6 = $this->Fsccoop_data->fscoop_share($loan_id);
+		// $arr_data['share'] = $result6;
+		$result = $this->Fsccoop_data->fscoop_full($loan_id);
 		$arr_data['fscoop_full'] = $result;
 
-		echo "<pre>";
-		print_r($arr_data);
-		exit;
+		// echo "<pre>";
+		// print_r($arr_data);
+		// exit;
 		$this->load->library('Center_function');
 		$test = $this->center_function->convert('5');
 		$this->center_function->mydate2date($row_member['birthday']);
