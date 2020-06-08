@@ -30,7 +30,12 @@ class PDF_02 extends CI_Controller {
 		$arr_data["district"] = $result5;
 		$result6 = $this->Fsccoop_data->fscoop_share($member_id);
 		$arr_data['share'] = $result6;
+		$result = $this->Fsccoop_data->fscoop_full($member_id);
+		$arr_data['fscoop_full'] = $result;
 
+		echo "<pre>";
+		print_r($arr_data);
+		exit;
 		$this->load->library('Center_function');
 		$test = $this->center_function->convert('5');
 		$this->center_function->mydate2date($row_member['birthday']);
