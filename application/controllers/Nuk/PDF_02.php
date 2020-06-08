@@ -14,22 +14,21 @@ class PDF_02 extends CI_Controller {
 
     public function Contract08()
 	{
-
-		$arr_data = array();
-
+		// print_r($_GET['member_id']); exit;
+		$member_id = '000008';
 		$arr_data = array();
 		$this->load->model('Fsccoop_data', 'Fsccoop_data');
-		$result = $this->Fsccoop_data->get_profile();
+		$result = $this->Fsccoop_data->get_profile($member_id);
 		$arr_data["user"] = $result;
-		$result2 = $this->Fsccoop_data->fscoop_getloan_amount();
+		$result2 = $this->Fsccoop_data->fscoop_getloan_amount($member_id);
 		$arr_data["loan_amount"] = $result2;
-		$result3 = $this->Fsccoop_data->fscoop_province();
+		$result3 = $this->Fsccoop_data->fscoop_province($member_id);
 		$arr_data["province"] = $result3;
-		$result4 = $this->Fsccoop_data->fscoop_amphur();
+		$result4 = $this->Fsccoop_data->fscoop_amphur($member_id);
 		$arr_data["amphur"] = $result4;
-		$result5 = $this->Fsccoop_data->fscoop_district();
+		$result5 = $this->Fsccoop_data->fscoop_district($member_id);
 		$arr_data["district"] = $result5;
-		$result6 = $this->Fsccoop_data->fscoop_share();
+		$result6 = $this->Fsccoop_data->fscoop_share($member_id);
 		$arr_data['share'] = $result6;
 
 		$this->load->library('Center_function');
