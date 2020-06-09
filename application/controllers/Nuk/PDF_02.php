@@ -25,7 +25,7 @@ class PDF_02 extends CI_Controller {
 		// print_r($arr_data);
 		// exit;
 		$this->load->library('Center_function');
-		$test = $this->center_function->convert('5');
+		// $test = $this->center_function->convert('5');
 		$this->center_function->mydate2date($row_member['birthday']);
 		// echo $test;exit;
 		
