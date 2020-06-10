@@ -58,23 +58,30 @@ class Fsccoop_data extends CI_Model
 		$this->db->from('coop_mem_group');
 		$this->db->WHERE("id = '$level'");
 		$coop_mem_group_row = $this->db->get()->row_array();
-		$this->db->select('*');
-		$this->db->from('coop_mem_share');
-		$this->db->WHERE("member_id = '$member_id'");
-		$coop_mem_share_row = $this->db->get()->result_array();
+		// $this->db->select('*');
+		// $this->db->from('coop_mem_share');
+		// $this->db->WHERE("member_id = '$member_id'");
+		// $coop_mem_share_row = $this->db->get()->result_array();
 
 		$this->db->select('N1.loan_id,N1.member_id,N1.guarantee_type,
-				N2.firstname_th,N2.lastname_th,N2.prename_id');
+				N2.firstname_th,N2.lastname_th,N2.prename_id,
+				N3.*,
+				N4.mem_group_name');
 		$this->db->from('coop_loan_guarantee as N1');
 		$this->db->join("coop_mem_apply as N2","N1.member_id = N2.member_id","left");
+		$this->db->join("coop_prename as N3","N2.prename_id = N3.prename_id","left");
+		$this->db->join("coop_mem_group as N4","N2.level = N4.id","left");
 		$this->db->WHERE("N1.loan_id = '$loan_id'");
 		$coop_loan_guarantee_row = $this->db->get()->result_array();
+		foreach($coop_loan_guarantee_row as $key => $value){
+			$coop_loan_guarantee_row[$key]['full_name_th'] = $coop_loan_guarantee_row[$key]['prename_full'].$coop_loan_guarantee_row[$key]['firstname_th'].' '.$coop_loan_guarantee_row[$key]['lastname_th'];
+		}
 
 		$arr_data['full'] =  $row[0];
 		$arr_data['full']['coop_mem_group'] = $coop_mem_group_row;
 		$arr_data['full']['coop_loan_guarantee'] = $coop_loan_guarantee_row;
-		$arr_data['full']['coop_mem_share'] = $coop_mem_share_row;
-		echo '<pre>';print_r($arr_data); exit;
+		// $arr_data['full']['coop_mem_share'] = $coop_mem_share_row;
+		// echo '<pre>';print_r($arr_data); exit;
 		return $arr_data['full'];
 	}
 

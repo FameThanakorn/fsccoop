@@ -20,6 +20,13 @@ function num_format($text) {
     $full_name = $data['prename_full'].$data['firstname_th'].' '.$data['lastname_th'];
     $c_address = $data['c_address_no'].''.$data['address_soi'].' '.$data['c_address_moo'].' '.$data['address_village'];
 
+    $day = date('d');
+    $mount = date('m');
+    $int_mount = (int)$mount;
+    $date = date('d/m/');
+    $year = date('Y')+543;
+    $date = $date.$year;
+
 	for ($pageNo = 1; $pageNo <= $pageCount_1; $pageNo++) {	
         $pdf->AddPage();
         $tplIdx = $pdf->importPage($pageNo);
@@ -42,12 +49,6 @@ function num_format($text) {
             $border = 0;
             $pdf->SetTextColor(0, 0, 0);
             $pdf->SetAutoPageBreak(true,0);
-            $day = date('d');
-            $mount = date('m');
-            $int_mount = (int)$mount;
-            $date = date('d/m/');
-            $year = date('Y')+543;
-            $date = $date.$year;
             if($pageNo == '1'){
                 $y = 7.63;
 
