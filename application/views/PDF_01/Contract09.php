@@ -28,13 +28,13 @@ function num_format($text) {
             $pdf->AddFont('THSarabunNew', '', 'THSarabunNew.php');
             $pdf->SetFont('THSarabunNew', '', 6 );
             $border = 0;
-            for ($i = 10; $i<=270;$i+= 5){
-                for ($j = 10; $j<200;$j+= 10){
-                    $pdf->SetXY( $j, $i );
-                    $pdf->MultiCell(7, 5, U2T($j.','.$i), $border, "L");//หนังสือกู้ที่
-                }
+            // for ($i = 10; $i<=270;$i+= 5){
+            //     for ($j = 10; $j<200;$j+= 10){
+            //         $pdf->SetXY( $j, $i );
+            //         $pdf->MultiCell(7, 5, U2T($j.','.$i), $border, "L");//หนังสือกู้ที่
+            //     }
 
-            }
+            // }
             
             $pdf->AddFont('THSarabunNew', '', 'THSarabunNew.php');
             $pdf->SetFont('THSarabunNew', '', 14 );
@@ -52,55 +52,55 @@ function num_format($text) {
 
                 $y_point = 16.2;
                 $pdf->SetXY( 30, $y_point );
-                $pdf->MultiCell(70, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(70, 5, U2T($full_name), $border, "C");//ชื่อผู้ขอกู้
                 $pdf->SetXY( 127, $y_point );
-                $pdf->MultiCell(17, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(17, 5, U2T($data['member_id']), $border, "C");//เลขที่สมาชิก
                 $pdf->SetXY( 163, $y_point );
-                $pdf->MultiCell(40, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(40, 5, U2T($data['coop_mem_group']['mem_group_name']), $border, "C");//หน่วยงาน
                 $y_point += $y;
                 $pdf->SetXY( 50, $y_point );
-                $pdf->MultiCell(53, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(53, 5, U2T('t1'), $border, "C");//ชื่อผู้ค้ำ1
                 $pdf->SetXY( 127, $y_point );
-                $pdf->MultiCell(17, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(17, 5, U2T('t2'), $border, "C");//เลขที่สมาชิก1
                 $pdf->SetXY( 163, $y_point );
-                $pdf->MultiCell(40, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(40, 5, U2T('t3'), $border, "C");//หน่อบงาน1
                 $y_point += $y;
                 $pdf->SetXY( 50, $y_point );
-                $pdf->MultiCell(53, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(53, 5, U2T('t4'), $border, "C");//ชื่อผู้ค้ำ2
                 $pdf->SetXY( 127, $y_point );
-                $pdf->MultiCell(17, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(17, 5, U2T('t5'), $border, "C");//เลขที่สมาชิก2
                 $pdf->SetXY( 163, $y_point );
-                $pdf->MultiCell(40, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(40, 5, U2T($data['marry_status']), $border, "C");//หน่อบงาน2
                 $y_point += $y;
                 $pdf->SetXY( 50, $y_point );
-                $pdf->MultiCell(53, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(53, 5, U2T('t7'), $border, "C");//ชื่อผู้ค้ำ2
                 $pdf->SetXY( 127, $y_point );
-                $pdf->MultiCell(17, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(17, 5, U2T('t8'), $border, "C");//เลขที่สมาชิก3
                 $pdf->SetXY( 163, $y_point );
-                $pdf->MultiCell(40, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(40, 5, U2T('t9'), $border, "C");//หน่อบงาน3
 
                 $y = 7.63;
                 $y_point = 257.8;
                 $pdf->SetXY( 80 , $y_point );
-                $pdf->MultiCell(65, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(65, 5, U2T('t10'), $border, "C");//รองผู้จัดการ
                 $pdf->SetXY( 161 , $y_point );
-                $pdf->MultiCell(10, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(10, 5, U2T('t11'), $border, "C");//วัน
                 $pdf->SetXY( 172 , $y_point );
-                $pdf->MultiCell(10, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(10, 5, U2T('t12'), $border, "C");//เดือน
                 $y_point += $y;
                 $pdf->SetXY( 80 , $y_point );
-                $pdf->MultiCell(65, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(65, 5, U2T('t13'), $border, "C");//หัวหน้าผ่ายสินเชื่อ
                 $pdf->SetXY( 161 , $y_point );
-                $pdf->MultiCell(10, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(10, 5, U2T('t14'), $border, "C");//วัน
                 $pdf->SetXY( 172 , $y_point );
-                $pdf->MultiCell(10, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(10, 5, U2T('t15'), $border, "C");//เดือน
                 $y_point += $y;
                 $pdf->SetXY( 80 , $y_point );
-                $pdf->MultiCell(65, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(65, 5, U2T('t16'), $border, "C");//เจ้าหน้าที่ สอ.รพ.
                 $pdf->SetXY( 161 , $y_point );
-                $pdf->MultiCell(10, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(10, 5, U2T('t17'), $border, "C");//วัน
                 $pdf->SetXY( 172 , $y_point );
-                $pdf->MultiCell(10, 5, U2T('t1'), $border, "C");//หนังสือกู้ที่
+                $pdf->MultiCell(10, 5, U2T('t18'), $border, "C");//เดือน
 
 
             }else if($pageNo == '2'){
@@ -356,9 +356,141 @@ function num_format($text) {
                 $pdf->SetXY( 92, $y_point );
                 $pdf->MultiCell(50 , 5, U2T('t1'), $border, "C");//ผู้กู้
             }else if($pageNo == '7'){
+                $y_point = 43.7;
+                $pdf->SetXY( 135, $y_point );
+                $pdf->MultiCell(60 , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point += $y;
+                $pdf->SetXY( 120, $y_point );
+                $pdf->MultiCell(13 , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 143, $y_point );
+                $pdf->MultiCell(28 , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 178.5, $y_point );
+                $pdf->MultiCell(13 , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point += $y;
+                $pdf->SetXY( 45, $y_point );
+                $pdf->MultiCell(55 , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 138, $y_point );
+                $pdf->MultiCell(37 , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 182, $y_point );
+                $pdf->MultiCell(8 , 5, U2T('t1'), $border, "C");//ผู้กู้
+
+
+                $y_point += $y;
+                $pdf->SetXY( 52, $y_point );
+                $pdf->MultiCell(15 , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 75, $y_point );
+                $pdf->MultiCell(15 , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 107, $y_point );
+                $pdf->MultiCell(35 , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 150, $y_point );
+                $pdf->MultiCell(40 , 5, U2T('t1'), $border, "C");//ผู้กู้
+
+                $y_point += $y;
+                $pdf->SetXY( 39, $y_point );
+                $pdf->MultiCell(40 , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 98, $y_point );
+                $pdf->MultiCell(35 , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 150, $y_point );
+                $pdf->MultiCell(40 , 5, U2T('t1'), $border, "C");//ผู้กู้
+
+                $y_point += $y;
+                $pdf->SetXY( 47, $y_point );
+                $pdf->MultiCell(35 , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 95, $y_point );
+                $pdf->MultiCell(38 , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 149, $y_point );
+                $pdf->MultiCell(40 , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point += $y;
+                $pdf->SetXY( 30, $y_point );
+                $pdf->MultiCell(30 , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 100, $y_point );
+                $pdf->MultiCell(20 , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 132, $y_point );
+                $pdf->MultiCell(58 , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point += $y;
+                $pdf->SetXY( 152, $y_point );
+                $pdf->MultiCell(40 , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point += $y+$y+$y+0.6;
+                $pdf->SetFont('THSarabunNew', '', 10 );
+                $pdf->SetXY( 68, $y_point );
+                $pdf->MultiCell(14.5 , 5, U2T($data['petition_number']), $border, "C");//ผู้กู้
+                $pdf->SetFont('THSarabunNew', '', 5 );
+                $pdf->SetXY( 110, $y_point );
+                $pdf->MultiCell(8 , 5, U2T($data['contract_number']), $border, "C");//ผู้กู้
+                $pdf->SetFont('THSarabunNew', '', 14 );
+            }else if($pageNo == '9'){
+                $y = 7.63;
                 $y_point = 40;
-                $pdf->SetXY( 140, $y_point );
-                $pdf->MultiCell(50 , 5, U2T('t1'), $border, "C");//ผู้กู้
-            }
+                $pdf->SetXY( 38, $y_point-1.7);
+                $pdf->MultiCell(7.8, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 46.8, $y_point-1.7);
+                $pdf->MultiCell(10, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 165, $y_point );
+                $pdf->MultiCell(15 , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 181, $y_point );
+                $pdf->MultiCell(15 , 5, U2T('t1'), $border, "C");//ผู้กู้
+
+                $y_point += $y;
+                $pdf->SetXY( 20, $y_point-1.7);
+                $pdf->MultiCell(45, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 59.4;
+                $pdf->SetXY( 80, $y_point);
+                $pdf->MultiCell(75, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 71.5;
+                $pdf->SetXY( 143, $y_point);
+                $pdf->MultiCell(50, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 83.3;
+                $pdf->SetXY( 45, $y_point);
+                $pdf->MultiCell(150, 5, U2T('t1'), $border, "C");//ผู้กู้
+
+
+                $y_point += $y;
+                $pdf->SetXY( 157, $y_point);
+                $pdf->MultiCell(35, 5, U2T('t1'), $border, "C");//ผู้กู้
+
+                $y_point += $y;
+                $pdf->SetXY( 88, $y_point);
+                $pdf->MultiCell(45, 5, U2T('t1'), $border, "C");//ผู้กู้
+
+                $y_point += $y;
+                $pdf->SetXY( 49, $y_point);
+                $pdf->MultiCell(35, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 95, $y_point);
+                $pdf->MultiCell(35, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 169, $y_point);
+                $pdf->MultiCell(25, 5, U2T('t1'), $border, "C");//ผู้กู้
+
+                $y_point += $y;
+                $pdf->SetXY( 29, $y_point);
+                $pdf->MultiCell(25, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 68, $y_point);
+                $pdf->MultiCell(30, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 110, $y_point);
+                $pdf->MultiCell(33  , 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 155, $y_point);
+                $pdf->MultiCell(40, 5, U2T('t1'), $border, "C");//ผู้กู้
+
+                $y_point += $y;
+                $pdf->SetXY( 38, $y_point);
+                $pdf->MultiCell(40, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point += $y+$y;
+                $pdf->SetXY( 77, $y_point);
+                $pdf->MultiCell(65, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 177, $y_point);
+                $pdf->MultiCell(16, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point += $y;
+                $pdf->SetXY( 41, $y_point);
+                $pdf->MultiCell(30, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 83, $y_point);
+                $pdf->MultiCell(70, 5, U2T('t1'), $border, "C");//ผู้กู้
+
+                $y_point += $y;
+                $pdf->SetXY( 45, $y_point);
+                $pdf->MultiCell(12, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 59, $y_point);
+                $pdf->MultiCell(12, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 83, $y_point);
+                $pdf->MultiCell(38, 5, U2T('t1'), $border, "C");//ผู้กู้
+            }   
         }
 	$pdf->Output();
