@@ -58,10 +58,10 @@ class Fsccoop_data extends CI_Model
 		$this->db->from('coop_mem_group');
 		$this->db->WHERE("id = '$level'");
 		$coop_mem_group_row = $this->db->get()->row_array();
-		// $this->db->select('*');
-		// $this->db->from('coop_mem_share');
-		// $this->db->WHERE("member_id = '$member_id'");
-		// $coop_mem_share_row = $this->db->get()->result_array();
+		$this->db->select('*');
+		$this->db->from('coop_mem_share');
+		$this->db->WHERE("member_id = '$member_id'");
+		$coop_mem_share_row = $this->db->get()->result_array();
 
 		$this->db->select('N1.loan_id,N1.member_id,N1.guarantee_type,
 				N2.firstname_th,N2.lastname_th,N2.prename_id,
@@ -81,10 +81,8 @@ class Fsccoop_data extends CI_Model
 		$arr_data['full']['coop_mem_group'] = $coop_mem_group_row;
 		$arr_data['full']['coop_loan_guarantee'] = $coop_loan_guarantee_row;
 		// $arr_data['full']['coop_mem_share'] = $coop_mem_share_row;
-		// echo '<pre>';print_r($arr_data); exit;
+		echo '<pre>';print_r($arr_data); exit;
 		return $arr_data['full'];
 	}
-
-
 
 }

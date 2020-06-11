@@ -46,7 +46,7 @@ function num_format($text) {
             //
             $pdf->AddFont('THSarabunNew', '', 'THSarabunNew.php');
             $pdf->SetFont('THSarabunNew', '', 14 );
-            $border = 0;
+            $border = 1;
             $pdf->SetTextColor(0, 0, 0);
             $pdf->SetAutoPageBreak(true,0);
             if($pageNo == '1'){
