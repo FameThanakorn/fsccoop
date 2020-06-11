@@ -32,16 +32,16 @@ function num_format($text) {
             $pdf->useTemplate($tplIdx, 0, 0, 0, 0, true);
 
             
-            $pdf->AddFont('THSarabunNew', '', 'THSarabunNew.php');
-            $pdf->SetFont('THSarabunNew', '', 6 );
-            $border = 0;
-            for ($i = 10; $i<=270;$i+= 5){
-                for ($j = 10; $j<200;$j+= 10){
-                    $pdf->SetXY( $j, $i );
-                    $pdf->MultiCell(7, 5, U2T($j.','.$i), $border, "L");//หนังสือกู้ที่
-                }
+            // $pdf->AddFont('THSarabunNew', '', 'THSarabunNew.php');
+            // $pdf->SetFont('THSarabunNew', '', 6 );
+            // $border = 0;
+            // for ($i = 10; $i<=270;$i+= 5){
+            //     for ($j = 10; $j<200;$j+= 10){
+            //         $pdf->SetXY( $j, $i );
+            //         $pdf->MultiCell(7, 5, U2T($j.','.$i), $border, "L");//หนังสือกู้ที่
+            //     }
 
-            }
+            // }
             
             $pdf->AddFont('THSarabunNew', '', 'THSarabunNew.php');
             $pdf->SetFont('THSarabunNew', '', 14 );
@@ -514,6 +514,170 @@ function num_format($text) {
                 $pdf->MultiCell(12, 5, U2T('t1'), $border, "C");//ผู้กู้
                 $pdf->SetXY( 83, $y_point);
                 $pdf->MultiCell(38, 5, U2T('t1'), $border, "C");//ผู้กู้
-            }   
+            }else if($pageNo == '10'){
+                $y_point = 70;
+                $pdf->SetXY( 29, $y_point);
+                $pdf->MultiCell(38, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 80, $y_point);
+                $pdf->MultiCell(33, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 76.5;
+                $pdf->SetXY( 37.5, $y_point);
+                $pdf->MultiCell(57, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 132.5;
+                $pdf->SetXY( 133, $y_point);
+                $pdf->MultiCell(57, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 139.8;
+                $pdf->SetXY( 133, $y_point);
+                $pdf->MultiCell(57, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 148;
+                $pdf->SetXY( 38, $y_point);
+                $pdf->MultiCell(57, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 123, $y_point);
+                $pdf->MultiCell(57, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 155.5;
+                $pdf->SetXY( 45, $y_point);
+                $pdf->MultiCell(47, 5, U2T('t1'), $border, "C");//ผู้กู้
+            }else if($pageNo == '11'){
+                $y_point = 79.5;
+                $pdf->SetXY( 135, $y_point);
+                $pdf->MultiCell(57, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 87;
+                $pdf->SetXY( 45, $y_point);
+                $pdf->MultiCell(40, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 94;
+                $pdf->SetXY( 36, $y_point);
+                $pdf->MultiCell(88, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 112;
+                $pdf->Image($myImage, 59, $y_point, 3);
+                $y_point = 120;
+                $pdf->Image($myImage, 59, $y_point, 3);
+                $y_point = 135;
+                $pdf->Image($myImage, 59, $y_point, 3);
+                $y_point = 143.2;
+                $pdf->Image($myImage, 59, $y_point, 3);
+                $y_point = 149.5;
+                $pdf->Image($myImage, 59, $y_point, 3);
+                $y_point = 165;
+                $pdf->Image($myImage, 59, $y_point, 3);
+                $y_point = 181;
+                $pdf->Image($myImage, 59, $y_point, 3);
+            }else if($pageNo == '11'){
+                
+            }else if($pageNo == '12'){
+
+            }else if($pageNo == '13'){
+                $y_point = 38.5;
+                $pdf->SetXY( 40, $y_point);
+                $pdf->MultiCell(10, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 48, $y_point);
+                $pdf->MultiCell(10, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 47;
+                $pdf->SetXY( 20, $y_point);
+                $pdf->MultiCell(47, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 60;
+                $pdf->SetXY( 80, $y_point);
+                $pdf->MultiCell(75, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 72;
+                $pdf->SetXY( 143, $y_point);
+                $pdf->MultiCell(48, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 83.7;
+                $pdf->SetXY( 45, $y_point);
+                $pdf->MultiCell(120, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 90.7;
+                $pdf->SetXY( 160, $y_point);
+                $pdf->MultiCell(30, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 98.8;
+                $pdf->SetXY( 87, $y_point);
+                $pdf->MultiCell(40, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 50;
+                $pdf->SetXY( 105, $y_point);
+                $pdf->MultiCell(10, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 106.5;
+                $pdf->SetXY( 48, $y_point);
+                $pdf->MultiCell(30, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 95, $y_point);
+                $pdf->MultiCell(30, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 165, $y_point);
+                $pdf->MultiCell(30, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 114;
+                $pdf->SetXY( 28, $y_point);
+                $pdf->MultiCell(30, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 65, $y_point);
+                $pdf->MultiCell(30, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 108, $y_point);
+                $pdf->MultiCell(30, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 165, $y_point);
+                $pdf->MultiCell(30, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 122.5;
+                $pdf->SetXY( 32.5, $y_point);
+                $pdf->MultiCell(40, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 137;
+                $pdf->SetXY( 72, $y_point);
+                $pdf->MultiCell(62, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 175, $y_point);
+                $pdf->MultiCell(20, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 144.5;
+                $pdf->SetXY( 40, $y_point);
+                $pdf->MultiCell(30, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 80, $y_point);
+                $pdf->MultiCell(70, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 152.5;
+                $pdf->SetXY( 43, $y_point);
+                $pdf->MultiCell(12, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 57, $y_point);
+                $pdf->MultiCell(12, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 83, $y_point);
+                $pdf->MultiCell(36, 5, U2T('t1'), $border, "C");//ผู้กู้
+            }else if($pageNo == '14'){
+                $y_point = 76.5;
+                $pdf->SetXY( 32, $y_point);
+                $pdf->MultiCell(30, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 80, $y_point);
+                $pdf->MultiCell(30, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 83;
+                $pdf->SetXY( 40, $y_point);
+                $pdf->MultiCell(52, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 139;
+                $pdf->SetXY( 132.5, $y_point);
+                $pdf->MultiCell(52, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 146.5;
+                $pdf->SetXY( 132.5, $y_point);
+                $pdf->MultiCell(52, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 154;
+                $pdf->SetXY( 42.5, $y_point);
+                $pdf->MultiCell(52, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 125, $y_point);
+                $pdf->MultiCell(52, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 162;
+                $pdf->SetXY( 45, $y_point);
+                $pdf->MultiCell(52, 5, U2T('t1'), $border, "C");//ผู้กู้
+                
+            }else if($pageNo == '15'){
+                $y_point = 79.5;
+                $pdf->SetXY( 137, $y_point);
+                $pdf->MultiCell(20, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $pdf->SetXY( 161, $y_point);
+                $pdf->MultiCell(20, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 87;
+                $pdf->SetXY( 44, $y_point);
+                $pdf->MultiCell(40, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 95;
+                $pdf->SetXY( 44, $y_point);
+                $pdf->MultiCell(83, 5, U2T('t1'), $border, "C");//ผู้กู้
+                $y_point = 112;
+                $pdf->Image($myImage, 59, $y_point, 3);
+                $y_point = 120;
+                $pdf->Image($myImage, 59, $y_point, 3);
+                $y_point = 135;
+                $pdf->Image($myImage, 59, $y_point, 3);
+                $y_point = 143;
+                $pdf->Image($myImage, 59, $y_point, 3);
+                $y_point = 150.5;
+                $pdf->Image($myImage, 59, $y_point, 3);
+                $y_point = 165.5;
+                $pdf->Image($myImage, 59, $y_point, 3);
+                $y_point = 181;
+                $pdf->Image($myImage, 59, $y_point, 3);
+            }
         }
 	$pdf->Output();

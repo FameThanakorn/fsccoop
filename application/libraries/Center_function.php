@@ -173,6 +173,24 @@ class Center_function
 				$convert .= $txtnum2[$strlen-$i-1];
 			}
 		}
+		if(!isset($number[1])) $number[1] = 0;
+		$convert .= 'บาท';
+		if($number[1]=='0' || $number[1]=='00' || $number[1]==''){
+			// $convert .= 'ถ้วน';
+		}else{
+			$strlen = strlen($number[1]);
+			for($i=0;$i<$strlen;$i++){
+				$n = substr($number[1], $i,1);
+				if($n!=0){
+					if($i != 0 && $i==(($strlen%6)-1) AND $n==1){$convert .= 'เอ็ด';}
+					elseif($i==(($strlen%6)-2) AND $n==2){$convert .= 'ยี่';}
+					elseif($i==(($strlen%6)-2) AND $n==1){$convert .= '';}
+					else{ $convert .= $txtnum1[$n];}
+					$convert .= $txtnum2[$strlen-$i-1];
+				}
+			}
+			$convert .= 'สตางค์';
+		}
 		return $convert;
 	}
 	function create_file_name($output_dir,$file_name){

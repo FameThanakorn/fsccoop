@@ -17,7 +17,21 @@ function num_format($text) {
     // print_r($data); 
 
     $name = $data['firstname_th'].' '.$data['lastname_th'];
-    $full_name = $data['prename_full'].$data['firstname_th'].' '.$data['lastname_th'];
+    $age                = $this->center_function->diff_birthday($data['birthday']);
+    $monthtext          = $this->center_function->month_arr();
+    $money_loan_amount_2text = $this->center_function->convert($data['loan_amount']);
+    $money_salary_2text = $this->center_function->convert($data['loan_amount']);
+
+    $date_to_text       = number_format(substr($data['approve_date'], 8, 2));
+    $date_to_month      = number_format(substr($data['approve_date'], 5, 2));
+    $date_to_year       = (substr($data['approve_date'], 0, 4))+543;
+    $month2text         = $monthtext[$date_to_month];
+    $full_date          = $date_to_text."  ".$month2text."  ".$date_to_year;
+    $day_start_period   = number_format(substr($data['date_start_period'], 8, 2));
+    $month_start_period = number_format(substr($data['date_start_period'], 5, 2));
+    $year_start_period  = (substr($data['approve_date'], 0, 4))+543;
+    $full_start_period  = $day_start_period."  ".$month_start_period."  ".$year_start_period;
+    $fullname_th        = $data['prename_full'].$data['firstname_th']."  ".$data['lastname_th'];
     $c_address = $data['c_address_no'].''.$data['address_soi'].' '.$data['c_address_moo'].' '.$data['address_village'];
 
     $day = date('d');
@@ -60,14 +74,14 @@ function num_format($text) {
                 $pdf->MultiCell(25, 5, U2T($date), $border, "C");//วันที่
                 $y_point = 50;
                 $pdf->SetXY( 133, $y_point );
-                $pdf->MultiCell(62.5, 5, U2T('สหกรณ์ออมทรัพย์โรงบาลตำรวจ'), $border, "C");//เขียนที่
+                $pdf->MultiCell(62.5, 5, U2T($data['coop_profile']['coop_name_th']), $border, "C");//เขียนที่
                 $y_point = 58;
                 $pdf->SetXY( 133, $y_point );
                 $pdf->MultiCell(62.5, 5, U2T($date), $border, "C"); //วันที่
 
                 $y_point = 78.6; 
                 $pdf->SetXY( 45, $y_point );
-                $pdf->MultiCell(80, 5, U2T($full_name), $border, "C"); //ชื่อ
+                $pdf->MultiCell(80, 5, U2T($fullname_th), $border, "C"); //ชื่อ
                 $pdf->SetXY( 163, $y_point );
                 $pdf->MultiCell(30, 5, U2T($data['member_id']), $border, "C"); //สมาชิกเลขทะเบียนที่
                 $y_point += $y;
@@ -91,22 +105,22 @@ function num_format($text) {
                 $pdf->SetXY( 105, $y_point );
                 $pdf->MultiCell(35, 5, U2T(($data['id_card']=='') ? '-' : $data['id_card']), $border, "C"); //ประจำตํวประชาชน
                 $pdf->SetXY( 152, $y_point );
-                $pdf->MultiCell(50, 5, U2T(($data['mem_group_name']=='') ? '-' : $data['mem_group_name']), $border, "C"); //สังกัด
+                $pdf->MultiCell(50, 5, U2T(($data['mem_group_name_level']=='') ? '-' : $data['mem_group_name_level']), $border, "C"); //สังกัด
                 $y_point += $y;
                 $pdf->SetXY( 55, $y_point );
-                $pdf->MultiCell(25, 5, U2T(($data['c_address']=='') ? '-' : $data['c_address']), $border, "C"); //บ้านเลขที่
+                $pdf->MultiCell(25, 5, U2T(($data['c_address_no']=='') ? '-' : $data['c_address_no']), $border, "C"); //บ้านเลขที่
                 $pdf->SetXY( 90, $y_point );
                 $pdf->MultiCell(35, 5, U2T(($data['c_address_road']=='') ? '-' : $data['c_address_road']), $border, "C"); //ถนน
                 $pdf->SetXY( 140, $y_point );
-                $pdf->MultiCell(50, 5, U2T(($data['district_id']=='') ? '-' : $data['district_id']), $border, "C"); //ตำบล
+                $pdf->MultiCell(50, 5, U2T(($data['c_district_id']=='') ? '-' : $data['c_district_id']), $border, "C"); //ตำบล
 
                 $y_point += $y;
                 $pdf->SetXY( 32, $y_point );
-                $pdf->MultiCell(40, 5, U2T(($data['amphur_id']=='') ? '-' : $data['amphur_id']), $border, "C"); //อำเภอ
+                $pdf->MultiCell(40, 5, U2T(($data['c_amphur_id']=='') ? '-' : $data['c_amphur_id']), $border, "C"); //อำเภอ
                 $pdf->SetXY( 90, $y_point );
-                $pdf->MultiCell(40, 5, U2T(($data['province_id']=='') ? '-' : $data['province_id']), $border, "C"); //จังหวัด
+                $pdf->MultiCell(40, 5, U2T(($data['c_province_id']=='') ? '-' : $data['c_province_id']), $border, "C"); //จังหวัด
                 $pdf->SetXY( 150, $y_point );
-                $pdf->MultiCell(40, 5, U2T(($data['mobile']=='') ? '-' : $data['mobile']), $border, "C"); //โทรศัพท์
+                $pdf->MultiCell(40, 5, U2T(($data['c_mobile']=='') ? '-' : $data['c_mobile']), $border, "C"); //โทรศัพท์
 
                 // if ($data['pay_type']==1){
 
@@ -127,23 +141,23 @@ function num_format($text) {
                     $pdf->MultiCell(18, 5, U2T($data['period_amount']), $border, "C"); //จำนวนงวด
                 }
 
-                $y_point = 233;
-                $pdf->SetXY( 133, $y_point );
-                $pdf->MultiCell(50, 5, U2T($name), $border, "C"); //ลงชื่อ
-                $y_point += $y;
-                $pdf->SetXY( 133, $y_point );
-                $pdf->MultiCell(50, 5, U2T($name), $border, "C"); //ลายเซ็น
-                $y_point = 276;
-                $pdf->SetXY( 133, $y_point );
-                $pdf->MultiCell(50, 5, U2T($name), $border, "C"); //ลงชื่อ
-                $y_point += $y;
-                $pdf->SetXY( 133, $y_point );
-                $pdf->MultiCell(50, 5, U2T($name), $border, "C"); //ลายเซ็น
+                // $y_point = 233;
+                // $pdf->SetXY( 133, $y_point );
+                // $pdf->MultiCell(50, 5, U2T($name), $border, "C"); //ลงชื่อ
+                // $y_point += $y;
+                // $pdf->SetXY( 133, $y_point );
+                // $pdf->MultiCell(50, 5, U2T($name), $border, "C"); //ลายเซ็น
+                // $y_point = 276;
+                // $pdf->SetXY( 133, $y_point );
+                // $pdf->MultiCell(50, 5, U2T($name), $border, "C"); //ลงชื่อ
+                // $y_point += $y;
+                // $pdf->SetXY( 133, $y_point );
+                // $pdf->MultiCell(50, 5, U2T($name), $border, "C"); //ลายเซ็น
 
             }else if($pageNo == '2'){
-                // $y_point = 125.3;
-                // $pdf->SetXY( 90, $y_point );
-                // $pdf->MultiCell(60 , 5, U2T('เจ้าหน้าที่กรอกเอง'), $border, "C");//จำนวนเงินกู้
+                $y_point = 125.3;
+                $pdf->SetXY( 90, $y_point );
+                $pdf->MultiCell(60 , 5, U2T($data['loan_amount']), $border, "C");//จำนวนเงินกู้
                 // $y_point = 164.5;
                 // $pdf->Image($myImage, 155.5, $y_point, 3);
                 // $pdf->Image($myImage, 168.7, $y_point, 3);
@@ -171,16 +185,16 @@ function num_format($text) {
             }else if($pageNo == '3'){
                 $y_point = 39.3;
                 $pdf->SetXY( 160, $y_point );
-                $pdf->MultiCell(35 , 5, U2T('t07?'), $border, "C");//ที่
+                // $pdf->MultiCell(35 , 5, U2T('t07?'), $border, "C");//ที่
                 $y_point += $y;
                 $pdf->SetXY( 160, $y_point );
-                $pdf->MultiCell(35 , 5, U2T($date), $border, "C");//วันที่
+                $pdf->MultiCell(35 , 5, U2T($full_date), $border, "C");//วันที่
                 $y_point += $y;
                 $pdf->SetXY( 45, $y_point );
-                $pdf->MultiCell(135 , 5, U2T($full_name), $border, "C");//ชื่อผู้กู๋
+                $pdf->MultiCell(135 , 5, U2T($fullname_th), $border, "C");//ชื่อผู้กู๋
                 $y_point += $y;
                 $pdf->SetXY( 45, $y_point );
-                $pdf->MultiCell(135 , 5, U2T($full_name), $border, "C");//ข้าพเจ้า
+                $pdf->MultiCell(135 , 5, U2T($fullname_th), $border, "C");//ข้าพเจ้า
                 $y_point += $y;
                 $pdf->SetXY( 157, $y_point );
                 $pdf->MultiCell(35 , 5, U2T($data['member_id']), $border, "C");//รหัสสมาชิก
@@ -190,8 +204,8 @@ function num_format($text) {
                 $y_point += $y;
                 $pdf->SetXY( 47, $y_point );
                 $pdf->MultiCell(35 , 5, U2T($data['id_card']), $border, "C");//รัฐวิสากิลเลขที่
-                $pdf->SetXY( 92, $y_point );
-                $pdf->MultiCell(40 , 5, U2T($data['mem_group_name']), $border, "C");//สังกัด
+                $pdf->SetXY( 91, $y_point );
+                $pdf->MultiCell(44 , 5, U2T($data['mem_group_name_level']), $border, "C");//สังกัด
                 $pdf->SetXY( 172, $y_point );
                 $pdf->MultiCell(22 , 5, U2T($data['address_no']." ".$data['address_moo']), $border, "C");//บ้านเลขที่
                 $y_point += $y;
@@ -213,25 +227,28 @@ function num_format($text) {
                 $number_text = $this->center_function->convert($data['loan_amount']);
                 $pdf->MultiCell(55 , 5, U2T($number_text), $border, "C");//จำนวนเงินตัวอักษร
                 $y_point = 138.4;
-                $pdf->Image($myImage, 42.3, $y_point+1.3, 3);
-                $pdf->SetXY( 105, $y_point );
-                $pdf->MultiCell(60 , 5, U2T($data['money_per_period']), $border, "C");//จำนวนเงินตัวอักษร
-                $y = $y + 0.2;
-                $y_point += $y;
-                $pdf->Image($myImage, 42.3, $y_point+1.3, 3);
-                $pdf->SetXY( 123, $y_point );
-                $pdf->MultiCell(60 , 5, U2T($data['money_per_period']), $border, "C");//จำนวนเงินตัวอักษร
+                if ($data['pay_type']==1){
+                    $pdf->Image($myImage, 42.3, $y_point+1.3, 3);
+                    $pdf->SetXY( 105, $y_point );
+                    $pdf->MultiCell(60 , 5, U2T($data['money_per_period']), $border, "C");//จำนวนเงินตัวอักษร
+                }else if($data['pay_type']==2){
+                    $y = $y + 0.2;
+                    $y_point += $y;
+                    $pdf->Image($myImage, 42.3, $y_point+1.3, 3);
+                    $pdf->SetXY( 123, $y_point );
+                    $pdf->MultiCell(60 , 5, U2T($data['money_per_period']), $border, "C");//จำนวนเงินตัวอักษร
                 
-                $y_point += $y;
-                $pdf->SetXY( 48, $y_point );
-                $number_text = $this->center_function->numbetText($data['period_amount']);
-                $pdf->MultiCell(29 , 5, U2T($number_text), $border, "C");//จำนวนงวดตัวอักษร
-                $pdf->SetXY( 155, $y_point );
-                $number_text = $this->center_function->numbetText($data['interest_per_year']);
-                $pdf->MultiCell(29 , 5, U2T($number_text), $border, "C");//จำนวนอัตราดอกเบี้ยตัวอักษร
-                $y_point += $y;
-                $pdf->SetXY( 60 , $y_point );
-                $pdf->MultiCell(29 , 5, U2T($data['month_start'].'/'.$data['year_start']), $border, "C");//จำนวนงวดประจำเดือนตัวอักษร
+                    $y_point += $y;
+                    $pdf->SetXY( 48, $y_point );
+                    $number_text = $this->center_function->numbetText($data['period_amount']);
+                    $pdf->MultiCell(29 , 5, U2T($number_text), $border, "C");//จำนวนงวดตัวอักษร
+                    $pdf->SetXY( 155, $y_point );
+                    $number_text = $this->center_function->numbetText($data['interest_per_year']);
+                    $pdf->MultiCell(29 , 5, U2T($number_text), $border, "C");//จำนวนอัตราดอกเบี้ยตัวอักษร
+                    $y_point += $y;
+                    $pdf->SetXY( 60 , $y_point );
+                    $pdf->MultiCell(29 , 5, U2T($month_arr[$data['month_start']]), $border, "C");//จำนวนงวดประจำเดือนตัวอักษร
+                }
             }else if($pageNo == '4'){
                 // $y_point = 36.3;
                 // $pdf->SetXY( 118.3, $y_point );
@@ -264,7 +281,7 @@ function num_format($text) {
 
                 $y_point = 229; 
                 $pdf->SetXY( 33, $y_point );
-                $pdf->MultiCell(85 , 5, U2T($full_name), $border, "C");//ชื่อ
+                $pdf->MultiCell(85 , 5, U2T($fullname_th), $border, "C");//ชื่อ
                 $pdf->SetXY( 150, $y_point );
                 $pdf->MultiCell(35 , 5, U2T($data['loan_amount']), $border, "C");//จำนวนหุ้น
                 $y_point += $y;
@@ -272,12 +289,12 @@ function num_format($text) {
                 $number_text = $this->center_function->convert($data['loan_amount']);
                 $pdf->MultiCell(77 , 5, U2T($number_text), $border, "C");//จำนวนหุ้นตัวอักษร
 
-                $y_point = 248.3;
-                $pdf->SetXY( 92, $y_point );
-                $pdf->MultiCell(50 , 5, U2T($name), $border, "C");//ชื่อผู้รับเงิน
-                $y_point += $y;
-                $pdf->SetXY( 92, $y_point );
-                $pdf->MultiCell(50 , 5, U2T($name), $border, "C");//ลายเซ็นผู้รับเงิน
+                // $y_point = 248.3;
+                // $pdf->SetXY( 92, $y_point );
+                // $pdf->MultiCell(50 , 5, U2T($name), $border, "C");//ชื่อผู้รับเงิน
+                // $y_point += $y;
+                // $pdf->SetXY( 92, $y_point );
+                // $pdf->MultiCell(50 , 5, U2T($name), $border, "C");//ลายเซ็นผู้รับเงิน
                 // $y_point += 12;
                 // $pdf->SetXY( 92, $y_point );
                 // $pdf->MultiCell(50 , 5, U2T('t22'), $border, "C");//เจ้าหน้าที่ผู้จ่ายเงิน
@@ -286,9 +303,9 @@ function num_format($text) {
                 // $pdf->MultiCell(50 , 5, U2T('t22'), $border, "C");//เจ้าหน้าที่ผู้ตรวจสัญญากู้
             }else if($pageNo == '5'){
                 $y = $y-0.2;
-                $y_point = 46.3;
+                $y_point = 46.5;
                 $pdf->SetXY( 135, $y_point );
-                $pdf->MultiCell(60 , 5, U2T('สหกรณ์ออมทรัพย์โรงบาลตำรวจ'), $border, "C");//เขียนที่
+                $pdf->MultiCell(60 , 5, U2T($data['coop_profile']['coop_name_th']), $border, "C");//เขียนที่
                 $y_point += $y;
                 $pdf->SetXY( 120, $y_point );
                 $pdf->MultiCell(12 , 5, U2T($day), $border, "C");//วันที่
@@ -298,7 +315,7 @@ function num_format($text) {
                 $pdf->MultiCell(15 , 5, U2T($year), $border, "C");//ปี
                 $y_point += $y;
                 $pdf->SetXY( 45, $y_point );
-                $pdf->MultiCell(55 , 5, U2T($full_name), $border, "C");//ชื่อ
+                $pdf->MultiCell(55 , 5, U2T($fullname_th), $border, "C");//ชื่อ
                 $pdf->SetXY( 138, $y_point );
                 $pdf->MultiCell(35 , 5, U2T($data['id_card']), $border, "C");//เลขบัตรประชาชน
                 $pdf->SetXY( 183, $y_point );
@@ -306,8 +323,7 @@ function num_format($text) {
                     $then = strtotime($birthday);
                     return(floor((time()-$then)/31556926));
                 }
-                $dateB="1990-02-14"; // ตัวแปรเก็บวันเกิด
-                $pdf->MultiCell(8 , 5, U2T(getAge($data['birthday'])), $border, "C");//อายุ  
+                $pdf->MultiCell(8 , 5, U2T($age), $border, "C");//อายุ  
 
                 $y_point += $y;
                 $pdf->SetXY( 52, $y_point );
@@ -336,7 +352,7 @@ function num_format($text) {
                 $pdf->MultiCell(40 , 5, U2T($data['position_name']), $border, "C");//ตำแหน่ง
                 $y_point += $y;
                 $pdf->SetXY( 30, $y_point );
-                $pdf->MultiCell(30 , 5, U2T(($data['mem_group_name']=='') ? '-' : $data['mem_group_name']), $border, "C");//สังกัด
+                $pdf->MultiCell(30 , 5, U2T(($data['mem_group_name_level']=='') ? '-' : $data['mem_group_name_level']), $border, "C");//สังกัด
                 $pdf->SetXY( 102, $y_point );
                 $pdf->MultiCell(18 , 5, U2T($data['salary']), $border, "C");//เงินเดือน
                 $pdf->SetXY( 132, $y_point );
@@ -347,17 +363,20 @@ function num_format($text) {
                 $pdf->MultiCell(30 , 5, U2T($data['member_id']), $border, "C");//ทะเบียนสมาชิก
 
                 $y_point += 23.3;
-                $pdf->SetXY( 74, $y_point );
-                // $pdf->MultiCell(13 , 5, U2T($data['petition_number']), $border, "L");//สัญญากู้เลขที่
-                $pdf->SetXY( 116, $y_point );
-                // $pdf->MultiCell(6 , 5, U2T($data['petition_number']), $border, "L");//คำขอกู้เลขที่   
+                $pdf->SetXY( 73, $y_point );
+                $pdf->SetFont('THSarabunNew', '', 10 );
+                $pdf->MultiCell(15 , 5, U2T($data['petition_number']), $border, "L");//สัญญากู้เลขที่
+                $pdf->SetXY( 114.0, $y_point );
+                $pdf->SetFont('THSarabunNew', '', 7 );
+                $pdf->MultiCell(10.3 , 5, U2T($data['contract_number']), $border, "L");//คำขอกู้เลขที่   
+                $pdf->SetFont('THSarabunNew', '', 14 );
 
-                $y_point = 241.8;
-                $pdf->SetXY( 81, $y_point );
-                $pdf->MultiCell(50 , 5, U2T($full_name), $border, "C");//ลงชื่อ ผู้ให้คำยินยอม
-                $y_point += $y;
-                $pdf->SetXY( 81, $y_point );
-                $pdf->MultiCell(50 , 5, U2T($full_name), $border, "C");//ลายเซ็น ผู้ให้คำยินยอม
+                // $y_point = 241.8;
+                // $pdf->SetXY( 81, $y_point );
+                // $pdf->MultiCell(50 , 5, U2T($fullname_th), $border, "C");//ลงชื่อ ผู้ให้คำยินยอม
+                // $y_point += $y;
+                // $pdf->SetXY( 81, $y_point );
+                // $pdf->MultiCell(50 , 5, U2T($fullname_th), $border, "C");//ลายเซ็น ผู้ให้คำยินยอม
                 // $y_point += $y;
                 // $pdf->SetXY( 81, $y_point );
                 // $pdf->MultiCell(50 , 5, U2T('t45'), $border, "L");//ลงชื่อ พยาน
