@@ -26,12 +26,16 @@ function num_format($text) {
 
     $date_to_text       = number_format(substr($data['approve_date'], 8, 2));
     $date_to_month      = number_format(substr($data['approve_date'], 5, 2));
-    $date_to_year       = (substr($data['approve_date'], 0, 4))+543;
+    if ($data['approve_date'] != ''){
+        $date_to_year       = (substr($data['approve_date'], 0, 4))+543;
+    }
     $month2text         = $monthtext[$date_to_month];
     $full_date          = $date_to_text."  ".$month2text."  ".$date_to_year;
     $day_start_period   = number_format(substr($data['date_start_period'], 8, 2));
     $month_start_period = number_format(substr($data['date_start_period'], 5, 2));
-    $year_start_period  = (substr($data['approve_date'], 0, 4))+543;
+    if ($data['approve_date'] != ''){
+        $year_start_period  = (substr($data['approve_date'], 0, 4))+543;
+    }
     $full_start_period  = $day_start_period."  ".$month_start_period."  ".$year_start_period;
     $fullname_th        = $data['prename_full'].$data['firstname_th']."  ".$data['lastname_th'];
 	for ($pageNo = 1; $pageNo <= $pageCount_1; $pageNo++) {	
