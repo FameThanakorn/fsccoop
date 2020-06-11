@@ -174,11 +174,12 @@ class Center_function
 			}
 		}
 		if(!isset($number[1])) $number[1] = 0;
-		$convert .= 'บาท';
+		// $convert .= 'บาท';
 		if($number[1]=='0' || $number[1]=='00' || $number[1]==''){
 			// $convert .= 'ถ้วน';
 		}else{
 			$strlen = strlen($number[1]);
+			$convert .= 'จุด';
 			for($i=0;$i<$strlen;$i++){
 				$n = substr($number[1], $i,1);
 				if($n!=0){
@@ -186,10 +187,10 @@ class Center_function
 					elseif($i==(($strlen%6)-2) AND $n==2){$convert .= 'ยี่';}
 					elseif($i==(($strlen%6)-2) AND $n==1){$convert .= '';}
 					else{ $convert .= $txtnum1[$n];}
-					$convert .= $txtnum2[$strlen-$i-1];
+					// $convert .= $txtnum2[$strlen-$i-1];
 				}
 			}
-			$convert .= 'สตางค์';
+			// $convert .= 'สตางค์';
 		}
 		return $convert;
 	}

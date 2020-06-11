@@ -156,7 +156,7 @@ class PDF_01 extends CI_Controller {
 		$month_short_arr = $this->center_function->month_short_arr();
 		$arr_data['month_arr'] = $month_arr;
 		$arr_data['month_short_arr'] = $month_short_arr;
-		echo '<pre>';print_r($arr_data);exit;
+		// echo '<pre>';print_r($arr_data);exit;
         $this->load->view('PDF_01/Contract09',$arr_data);
 	}
 

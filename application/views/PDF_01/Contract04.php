@@ -49,7 +49,7 @@ function num_format($text) {
                 // $pdf->Image($myImage, 35.8, 162.3, 3);
                 $y_point = 55.7;
                     $pdf->SetXY( 33, $y_point );
-                    $pdf->MultiCell(65, 5, U2T('สหกรณ์ออมทรัพย์โรงพยาบาลตำรวจ**'), $border, "C"); //เขียนที่
+                    $pdf->MultiCell(65, 5, U2T($data['coop_profile']['coop_name_th']), $border, "C"); //เขียนที่
                     $y_point = 63.5;
                     $pdf->SetXY( 130.2, $y_point );
                     $pdf->MultiCell(11, 5, U2T($date_to_text), $border, "C"); //วันที่ 
@@ -178,9 +178,9 @@ function num_format($text) {
                 // $y_point = 139;
                 //     $pdf->SetXY( 36, $y_point );
                 //     $pdf->MultiCell(42, 5, U2T('110-5455666-175'), $border, "C"); //ชื่อผู้กู้
-                $y_point = 154;
-                    $pdf->SetXY( 60, $y_point );
-                    $pdf->MultiCell(42, 5, U2T('110-5455666-175'), $border, "C"); //ชื่อผู้กู้
+                // $y_point = 154;
+                //     $pdf->SetXY( 60, $y_point );
+                //     $pdf->MultiCell(42, 5, U2T('110-5455666-175'), $border, "C"); //ชื่อผู้กู้
             }
         }
 	//exit;

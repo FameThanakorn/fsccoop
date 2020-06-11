@@ -161,17 +161,17 @@ function num_format($text) {
                 $pdf->MultiCell(25, 5, U2T($data['loan_amount']), $border, "C"); //จำนวนเงิน
                 $pdf->SetXY( 138, $y_point );
                 $pdf->MultiCell(57, 5, U2T($money_loan_amount_2text), $border, "C"); //ตัวอักษร
-                $y_point = 119.7;
+                $y_point = 119.3;
                 $pdf->SetXY( 149, $y_point );
-                $pdf->MultiCell(40, 5, U2T($data['money_per_period']), $border, "C"); //จำนวนเงิน
+                $pdf->MultiCell(40, 5, U2T($this->center_function->numbetText($data['money_per_period'])), $border, "C"); //จำนวนเงิน
 
-                $y_point = 127;
+                $y_point = 126.7;
                 $pdf->SetXY( 50.5, $y_point );
-                $pdf->MultiCell(31, 5, U2T($data['period_amount']), $border, "C"); //ตัวอักษรจำนวนเงิน
+                $pdf->MultiCell(31, 5, U2T($this->center_function->numbetText($data['period_amount'])), $border, "C"); //ตัวอักษรจำนวนเงิน
 
-                $y_point = 127;
+                $y_point = 126.7;
                 $pdf->SetXY( 157, $y_point );
-                $pdf->MultiCell(30, 5, U2T($data['interest_per_year']), $border, "C"); //จำนวนเงิน
+                $pdf->MultiCell(33, 5, U2T($this->center_function->numbetText($data['interest_per_year'])), $border, "C"); //จำนวนเงิน
 
                 $y_point = 134.8;
                 $pdf->SetXY( 62, $y_point );
@@ -256,7 +256,7 @@ function num_format($text) {
                 $pdf->MultiCell(38, 5, U2T($data['position']), $border, "C"); //
                 $y_point = 86.2;
                 $pdf->SetXY( 30.5, $y_point );
-                $pdf->MultiCell(38, 5, U2T($data['position']), $border, "C"); //
+                $pdf->MultiCell(38, 5, U2T($data['mem_group_name_level']), $border, "C"); //
                 $pdf->SetXY( 106.5, $y_point );
                 $pdf->MultiCell(20, 5, U2T($data['salary']), $border, "C"); //
                 $pdf->SetXY( 135.5, $y_point );
